@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" href="styles/bootstrap-material-design.min.css">
+  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css" />
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Scouter</title>
+</head>
+
+<body>
+
+  <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+    <header class="bmd-layout-header">
+      <div class="navbar navbar-dark bg-faded fixed-top justify-content-start">
+        <button class="navbar-toggler" type="button" data-toggle="drawer" data-target="#dw-s2">
+          <span class="sr-only">Toggle drawer</span>
+          <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="#">&nbsp;&nbsp;My Profile</a>
+      </div>
+    </header>
+    <div id="dw-s2" class="bmd-layout-drawer bg-faded">
+      <header>
+        <!-- <a class="navbar-brand">Profile section here</a> -->
+        <div id="drawerProfile">
+          <img class="rounded-circle" id="drawerProfileImage" src="images/default_user_light.png"></img>
+          <p id="drawerProfileName"></p>
+          <p id="drawerProfileEmail"></p>
+        </div>
+      </header>
+      <ul class="list-group">
+        <a id="menuHome" class="list-group-item"><i class="material-icons">home</i>Home</a>
+        <a id="menuProfile" class="list-group-item"><i class="material-icons">person</i>My profile</a>
+        <a id="menuSignOut" class="list-group-item"><i class="material-icons">login</i>Sign out</a>
+      </ul>
+    </div>
+
+    <main class="bmd-layout-content">
+
+      <div id="profilePage" class="container page-container">
+
+        <h2 class="text-center">My Info</h2>
+
+        <div class="card" id="userCard">
+          <div class="card-body">
+            <div id="userCardHeader">
+              <img id="userCardImage" class="rounded-circle" src="images/default_user.png">
+              <div style="margin-left: 15px">
+                <h5 id="userCardName" class="card-title"></h5>
+                <h6 id="userCardEmail" class="card-subtitle mb-2 text-muted">Loading...</h6>
+              </div>
+            </div>
+            <div id="userCardFooter">
+              <p id="userCardLocation" class="card-text">My location: 5500 Wabash Ave, Terre Haute IN</p>
+              <a href="#" class="card-link" data-toggle="modal" data-target="#editProfileDialog">EDIT</a>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 15px;">
+          <h2 style="margin-right:15px">My Dogs</h2>
+          <button id="addDogButton" type="button" class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm" data-toggle="modal"
+            data-target="#addDogDialog">
+            <i class="material-icons">add</i>
+          </button>
+        </div>
+
+        <div id="dogListContainer">
+          <!-- <div class="card dogCard">
+            <img class="card-img-top"
+              src="https://i0.wp.com/puppytoob.com/wp-content/uploads/2017/03/Boston-Terrier.jpg?resize=750%2C444"
+              alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><b>Ollie</b></h5>
+              <p class="card-text">Boston terrier</p>
+              <p class="card-text">Hyper but slightly shy, approach with care</p>
+              <a href="#" class="card-link" style="color: var(--main-color);">EDIT</a>
+              <a href="#" class="card-link" style="float: right; color: var(--main-color);">REPORT AS MISSING</a>
+            </div>
+          </div>
+        </div> -->
+        </div>
+
+    </main>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="editProfileDialog" tabindex="-1" role="dialog" aria-labelledby="Edit profile dialog"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit your profile</h5>
+        </div>
+        <div class="modal-body">
+
+          <div class="modalImageContainer">
+            <image class="img-fluid" id="modalUserPhoto" src="" alt="User photo" style="display:none;">
+              <input id="userPhotoFile" type="file" hidden>
+              <button id="userEditPhotoButton" type="button" class="btn photoButton">Change photo</button>
+          </div>
+
+          <div class="form-group bmd-form-group">
+            <div class="input-group">
+              <input id="modalInputFirstName" type="text" class="form-control" placeholder="First name">
+              &nbsp;&nbsp;&nbsp;
+              <input id="modalInputLastName" type="text" class="form-control" placeholder="Last name">
+            </div>
+          </div>
+
+          <div class="form-group bmd-form-group">
+            <input class="form-control" id="modalInputLocation" autocomplete="off" placeholder="Location">
+            <span class="bmd-help">Please enter your address or city</span>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+          <button id="submitEditProfile" type="button" class="btn btn-primary" style="color: var(--main-color);"
+            data-dismiss="modal">SAVE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Dog Modal -->
+  <div class="modal fade" id="addDogDialog" tabindex="-1" role="dialog" aria-labelledby="Add dog dialog"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add a dog</h5>
+        </div>
+        <div class="modal-body">
+
+          <div class="modalImageContainer">
+            <image class="img-fluid" id="modalDogPhoto" src="" alt="Dog photo" style="display:none">
+              <input id="dogPhotoFile" type="file" hidden>
+              <button id="addDogPhotoButton" type="button" class="btn photoButton">Add photo</button>
+          </div>
+
+          <div class="form-group bmd-form-group">
+            <input class="form-control" id="modalInputDogName" autocomplete="off" placeholder="Your dog's name">
+          </div>
+
+          <div class="form-group bmd-form-group">
+            <input class="form-control" id="modalInputDogBreed" autocomplete="off" placeholder="Your dog's breed">
+          </div>
+
+          <div class="form-group bmd-form-group">
+            <input class="form-control" id="modalInputDogDescription" autocomplete="off" placeholder="Description">
+            <span class="bmd-help">Provide a brief description of your dog's personality</span>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+          <button id="submitAddDog" type="button" class="btn btn-primary" style="color: var(--main-color);"
+            data-dismiss="modal">ADD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Dog Modal -->
+  <div class="modal fade" id="editDogDialog" tabindex="-1" role="dialog" aria-labelledby="Edit dog dialog"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editDogModalTitle">Edit a dog</h5>
+        </div>
+        <div class="modal-body">
+
+          <div class="modalImageContainer">
+            <image class="img-fluid" id="modalEditDogPhoto" src="" alt="Dog photo">
+              <input id="dogEditPhotoFile" type="file" hidden>
+              <button id="editDogPhotoButton" type="button" class="btn photoButton">Change photo</button>
+          </div>
+
+          <div class="form-group bmd-form-group">
+            <input class="form-control" id="modalInputEditDogName" autocomplete="off" placeholder="Your dog's name">
+          </div>
+
+          <div class="form-group bmd-form-group">
+            <input class="form-control" id="modalInputEditDogBreed" autocomplete="off" placeholder="Your dog's breed">
+          </div>
+
+          <div class="form-group bmd-form-group">
+            <input class="form-control" id="modalInputEditDogDescription" autocomplete="off" placeholder="Description">
+            <span class="bmd-help">Provide a brief description of your dog's personality</span>
+          </div>
+
+        </div>
+        <div style="display:flex; justify-content: space-between; margin-left: 5px">
+          <button type="button" class="btn btn-primary" style="color: rgb(231, 55, 55);" data-toggle="modal"
+          data-target="#deleteDogConfirmDialog">DELETE</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+            <button id="submitEditDog" type="button" class="btn btn-primary" style="color: var(--main-color);"
+              data-dismiss="modal">SAVE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Report missing dog Modal -->
+  <div id="reportMissingDogDialog" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="modalMissingTitle" class="modal-title">Report your dog as missing</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group bmd-form-group">
+            <input class="form-control" id="modalInputMissingLocation" autocomplete="off" placeholder="Location">
+            <span class="bmd-help">Please enter where you last saw your dog</span>
+          </div>
+          <p id="missingLocationText" class="text-center"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+          <button id="submitReportMissingDog" type="button" class="btn btn-primary" style="color: rgb(231, 55, 55);"
+            data-dismiss="modal">REPORT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Report found dog Modal -->
+  <div id="reportFoundDogDialog" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Report your dog as found</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="reportAsFoundText">Do you want to report your dog as found?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+          <button id="submitReportFoundDog" type="button" class="btn btn-primary" style="color: var(--main-color);"
+            data-dismiss="modal">YES</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Report found dog Modal -->
+  <div id="deleteDogConfirmDialog" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">Delete dog</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="confirmDeleteText">Are you sure you want to delete this dog?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+          <button id="submitDeleteDog" type="button" class="btn btn-primary" style="color: rgb(231, 55, 55);"
+            data-dismiss="modal">DELETE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/popper.js"></script>
+  <script src="scripts/bootstrap-material-design.js"></script>
+  <script>
+    $("body").bootstrapMaterialDesign();
+  </script>
+  <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-storage.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>

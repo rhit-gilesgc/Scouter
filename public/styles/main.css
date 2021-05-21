@@ -1,0 +1,293 @@
+:root {
+    --main-color: #E7582B;
+    --main-color-dark: #bd4b1e;
+    --light-gray-color: rgb(204, 204, 204);
+}
+
+body {
+    background: #DDDDDD;
+}
+
+.bmd-layout-content {
+    height: 100vh;
+}
+
+.navbar {
+    background-color: var(--main-color);
+    color: white;
+    align-items: center;
+    justify-content: unset;
+}
+
+.page-container {
+    margin-top: 75px;
+}
+
+#menuButton {
+    margin-right: 15px;
+}
+
+#mainPageHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+#lostCheckbox, #lostLabel {
+    margin: auto;
+    width:max-content;
+    align-items: center;
+    text-align: center;
+}
+
+#lostCheckbox {
+    margin-right: 5px;
+}
+
+#settingsContainer {
+    display: flex;
+}
+
+.dogCard {
+    width: 20rem;
+    margin: 20px;
+    margin-bottom: auto;
+}
+
+#loginPageInfoHeader {
+    justify-content: left;
+}
+
+#loginPageInfoHeader > h3 {
+    margin-left: 15px;
+}
+
+.bmd-layout-drawer > header {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.bmd-layout-drawer > ul {
+    background-color: #ddd;
+}
+
+.list-group-item :first-child {
+    margin-right: 0.75rem;
+}
+
+.list-group .list-group-item {
+    transition-property: background-color;
+    transition-duration: 0.1s;
+}
+
+.list-group .list-group-item:hover {
+    background-color: var(--light-gray-color);
+    cursor: pointer;
+}
+
+.mainButton, .mainButton:active:focus, .mainButton:focus, .mainButton:hover {
+    display: block;
+    color: white;
+    background: var(--main-color);
+    font-size: 1.1em;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+#loginButton {
+    margin: 30px auto;
+}
+
+#loginForm #inputBox {
+    width: 75%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+#loginForm {
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    padding: 30px;
+    background-color: #eee;
+    box-shadow: 0 7px 17px -10px grey;
+    width: 60%;
+    margin: auto;
+    margin-top: 100px;
+}
+
+#loginForm hr {
+    width: 85%;
+    margin-bottom: 30px;
+}
+
+#createAccountBox {
+    margin-top: 50px;
+}
+
+#createAccountBox a {
+    color: var(--main-color);
+}
+
+.modal-footer > button {
+    color: var(--main-color);
+}
+
+#drawerProfile {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#drawerProfileImage {
+    width: 60px;
+    height: 60px;
+}
+
+#drawerProfileName {
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
+
+#drawerProfileEmail {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+#userCard {
+    width: 20rem;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+#userCard > .card-body {
+    padding-bottom: 0.8rem;
+}
+
+#userCardHeader {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 12px;
+}
+
+#userCardImage {
+    width: 50px;
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#userCardFooter {
+    display: flex;
+    justify-content: space-between;
+}
+
+#userCardFooter > a {
+    margin-top: auto;
+}
+
+#profilePage > h2 {
+    margin-bottom: 20px;
+}
+
+.dogCard .card-title {
+    margin-bottom: unset;
+}
+
+#dogListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.modalImageContainer {
+    margin: auto;
+}
+
+.photoButton {
+    margin: auto;
+    width: 100%;
+}
+
+.card-link {
+    color: var(--main-color);
+    border-radius: 5px;
+    transition-property: color;
+    transition-duration: 0.1s;
+}
+
+.card-link:hover {
+    color: var(--main-color-dark);
+}
+
+#missingLocationText {
+    margin-top: 50px;
+}
+
+.missingText {
+    color: rgb(231, 55, 55);
+}
+
+.dogCardTitleContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.marginTopBottomAuto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.floatRight {
+    float: right;
+}
+
+.redHighlight {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: rgb(255 226 226);
+}
+
+.redHighlight:empty {
+    background-color: unset;
+}
+
+.smallInput {
+    height: 30px;
+    width: 20%;
+    text-align: center;
+    border: none;
+    padding: 0 10px;
+    box-shadow: none;
+    outline: none;
+    transition: all .3s;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+.smallInput:focus {
+    box-shadow: 0 0 0 2px var(--main-color);
+    background: #fff;
+    border-color: var(--main-color);
+}
+
+@media (max-width: 991px) {
+    .optionsColumn {
+        margin-bottom: 40px;
+    }
+
+    .optionsColumn:last-child {
+        margin-bottom: unset;
+    }
+}
+
+@media (max-width: 575px) {
+    #loginForm {
+        width: unset;
+    }
+
+    #loginForm h1 {
+        font-size: 2rem;
+    }
+}

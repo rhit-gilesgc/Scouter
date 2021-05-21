@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" href="styles/bootstrap-material-design.min.css">
+  <link rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css" />
+  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css" />
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Join Scouter</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Join Scouter</a>
+  </nav>
+  <div id="loginPage" class="container page-container">
+
+    <div id="loginForm">
+      <h1 class="text-center">Login to Scouter</h1>
+
+      <div id="inputBox">
+        <input id="inputEmail" class="smallInput" type="email" placeholder="Email" style="height:50px; width: 100%">
+        <input id="inputPassword" class="smallInput" type="password" placeholder="Password" style="height:50px; width: 100%">
+        <button type="button" id="loginButton" class="btn mainButton">Sign in</button>
+      </div>
+
+      <hr>
+<!-- 
+      <div id="firebaseui-auth-container"></div> -->
+
+      <div id="createAccountBox">
+        <p class="text-center">Not a member? <a href="#" data-toggle="modal" data-target="#createAccountDialog">Create
+            an account</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="createAccountDialog" tabindex="-1" role="dialog" aria-labelledby="Create account dialog"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create an account</h5>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group bmd-form-group">
+            <div class="input-group">
+              <input id="modalInputFirstName" type="text" class="form-control" placeholder="First name">
+              &nbsp;&nbsp;&nbsp;
+              <input id="modalInputLastName" type="text" class="form-control" placeholder="Last name">
+            </div>
+          </div>
+
+          <div class="form-group bmd-form-group">
+            <input type="text" class="form-control" id="modalInputEmail" placeholder="Email">
+          </div>
+
+          <div class="form-group bmd-form-group">
+            <!-- <label for="inputQuote" class="bmd-label-floating">Quote</label> -->
+            <input type="password" class="form-control" id="modalInputPassword" placeholder="Password">
+          </div>
+
+          <div class="form-group bmd-form-group">
+            <input class="form-control" id="modalInputLocation" autocomplete="off" placeholder="Location">
+            <span class="bmd-help">Please enter your address or city</span>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+          <button id="submitCreateAccount" type="button" class="btn btn-primary"
+            style="color: var(--main-color);">CREATE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/popper.js"></script>
+  <script src="scripts/bootstrap-material-design.js"></script>
+  <script>
+    $("body").bootstrapMaterialDesign();
+  </script>
+  <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"></script>
+  <script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>

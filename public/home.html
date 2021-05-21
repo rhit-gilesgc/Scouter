@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" href="styles/bootstrap-material-design.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Scouter</title>
+</head>
+
+<body>
+
+  <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+    <header class="bmd-layout-header">
+      <div class="navbar navbar-dark bg-faded fixed-top justify-content-start">
+        <button class="navbar-toggler" type="button" data-toggle="drawer" data-target="#dw-s2">
+          <span class="sr-only">Toggle drawer</span>
+          <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="#">&nbsp;&nbsp;Scouter</a>
+      </div>
+    </header>
+    <div id="dw-s2" class="bmd-layout-drawer bg-faded">
+      <header>
+        <div id="drawerProfile">
+          <img class="rounded-circle" id="drawerProfileImage" src="images/default_user_light.png"></img>
+          <p id="drawerProfileName"></p>
+          <p id="drawerProfileEmail"></p>
+        </div>
+      </header>
+      <ul class="list-group">
+        <a id="menuHome" class="list-group-item"><i class="material-icons">home</i>Home</a>
+        <a id="menuProfile" class="list-group-item"><i class="material-icons">person</i>My profile</a>
+        <a id="menuSignOut" class="list-group-item"><i class="material-icons">login</i>Sign out</a>
+      </ul>
+    </div>
+
+    <main class="bmd-layout-content">
+
+      <div id="mainPage" class="container page-container">
+        <div id="mainPageHeader">
+          <h3 style="margin-right: 15px;">Dogs in the area</h3>
+          <div id="lostContainer">
+            <!-- <input type="checkbox" id="lostCheckbox" name="lostCheckbox" checked> -->
+            <!-- <label id="lostLabel" for="lostCheckbox">Lost dogs only</label> -->
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#settingsCollapse"
+              aria-expanded="false" aria-controls="settingsCollapse" style="color: var(--main-color)">
+              Options &#9660;
+            </button>
+          </div>
+        </div>
+
+        <div class="collapse" id="settingsCollapse">
+          <div class="card card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12 col-lg-4 optionsColumn">
+                  <div style="margin:auto; width:min-content;">
+                    <label for="searchDog" style="width: 15rem; text-align: center; margin: auto">Search (case-sensitive)</label>
+
+                    <input id="searchDog" class="smallInput" type="text" placeholder="Search a dog's name" style="width: 100%">
+                  </div>
+                </div>
+                <div class="col-sm-12 col-lg-4 optionsColumn">
+                  <div style="margin:auto; width:min-content;">
+                    <label for="searchRadius" style="width: 15rem; text-align: center; margin: auto">Search radius (miles)</label>
+                    <input id="searchRadius" class="smallInput" type="number" placeholder="Search radius (m)" value="30" style="width: 100%">
+                  </div>
+                </div>
+                <div class="col-sm-12 col-lg-4 optionsColumn">
+                  <div style="margin:auto; width:min-content; display: flex; justify-content: center; height:100%;">
+                    <input type="checkbox" id="lostCheckbox" name="lostCheckbox">
+                    <label id="lostLabel" for="lostCheckbox">Missing dogs only</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="card dogCard">
+            <img class="card-img-top"
+              src="https://i0.wp.com/puppytoob.com/wp-content/uploads/2017/03/Boston-Terrier.jpg?resize=750%2C444"
+              alt="Card image cap">
+            <div class="card-body">
+              <div id="idk">
+                <h5 class="card-title"><b>Ollie</b></h5>
+                <p>MISSING</p>
+              </div>
+              <p class="card-text">Boston Terrier</p>
+              <p class="card-text">Lives at 5500 Wabash Ave, Terre Haute IN.</p>
+              <p class="card-text">Description: Hyper but slightly shy, approach with care</p>
+              <a href="#" class="card-link" style="color: var(--main-color);">MORE INFO</a>
+              <a href="#" class="card-link" style="float: right; color: var(--main-color);">CONTACT OWNER</a>
+            </div>
+          </div> -->
+
+        <div id="dogListContainer">
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Contact owner Modal -->
+    <div id="ownerContactDialog" class="modal fade" tabindex="-1" role="dialog" style="margin-top: 70px;">
+      <div class="modal-dialog" role="document" style="max-width: 400px;">
+        <div class="modal-content" style="display: flex; flex-direction: row-reverse;">
+          <!-- <div id="modalContactTitle" class="modal-header"> -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            style="margin-bottom: auto; padding: 15px">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <!-- </div> -->
+          <div class="modal-body">
+            <div id="userCardHeader">
+              <img id="userCardImage" class="rounded-circle" src="images/default_user.png">
+              <div style="margin-left: 15px">
+                <h5 id="userCardName" class="card-title"></h5>
+                <h6 id="userCardEmail" class="card-subtitle mb-2 text-muted">Loading...</h6>
+              </div>
+            </div>
+            <div id="userCardFooter">
+              <p id="userCardLocation" class="card-text">My location: 5500 Wabash Ave, Terre Haute IN</p>
+            </div>
+          </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+            <button id="submitDeleteDog" type="button" class="btn btn-primary" style="color: rgb(231, 55, 55);"
+              data-dismiss="modal">DELETE</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/popper.js"></script>
+  <script src="scripts/bootstrap-material-design.js"></script>
+  <script>
+    $("body").bootstrapMaterialDesign();
+  </script>
+  <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
